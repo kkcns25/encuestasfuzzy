@@ -1,0 +1,21 @@
+{% extends "base.html" %} <!-- para declarar que es una extension de base.html-->
+
+{% load static %}
+
+
+
+{% block head_title %}Encuesta acabada{% endblock %}<!-- titulo que sale en la pestaña del navegador-->
+
+
+{% block content %}
+
+<h2 class="text-align-center"><strong> Gracias, has terminado la encuesta.</strong></h2>
+<br>
+<a class="btn btn-lg btn-primary" href="{% url 'profile' %}"role="button">Tu  perfil &raquo;</a>
+<br>
+<br>
+<a class="btn btn-lg btn-primary" href="{% url 'inicio' %}"role="button">Inicio &raquo;</a>
+
+{% endblock %}
+
+

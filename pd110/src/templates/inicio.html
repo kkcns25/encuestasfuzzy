@@ -1,0 +1,56 @@
+{% extends "base.html" %} <!-- para declarar que es una extension de base.html-->
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}Bienvenidos | {{ block.super }}{% endblock %} <!--blocksuper hereda el nombre del bloque super//nombre que llevara la barra del navegador-->
+
+<style>
+   {% block style %}
+   .jumbotron{
+        background-color: #343a40 !important;
+        color:white !important;
+   }
+   {% endblock %}
+</style>
+
+{% block jumbotron %}
+
+<main class="jumbotron">
+    <main role="main" class="container">
+<div class="row">
+  <div class="col-sm-6 pull-right">
+        <h1>Página para la creación de encuestas Fuzzy likert</h1>
+         <p class="lead text-align-center"></p>
+         <a class="btn btn-lg btn-primary" href="{% url 'about' %}" role="button">Saber mas &raquo;</a>
+     </div>
+    <div class="col-sm-6 pull-left"><img src='{% static "img/ejemplo_resultado.jpg" %}' width="500"/>
+    </div>  <!--cuadro donde irá un video o foto-->
+</div>
+</main>
+</main>
+
+{% endblock %}
+
+<hr/>
+<br/>
+{% block content %}
+<div class="row">
+  <div class="col-sm-3 pull-right">
+      <p class="lead text-align-center"> Con la tecnología de código abieto de Python </p>
+      <img src='{% static "img/pylogo.png" %}' width="150" height="110"/>
+  </div>
+    <div class='col-sm-3'>
+        <p class="lead text-align-center"> Creado con Django &amp; Bootstrap </p>
+        <img src='{% static "img/bootstrap.png" %}' width="150" height="110"/>
+    </div>
+        <div class='col-sm-3'>
+        <p class="lead text-align-center"> Con la tecnología web de Javascript  </p>
+        <img src='{% static "img/javalogo.png" %}' width="200" height="110"/>
+    </div>
+        <div class='col-sm-3'>
+        <p class="lead text-align-center"> Universidad de Castilla - La Mancha </p>
+        <img src='{% static "img/uclm.jpg" %}' width="200" height="110"/>
+    </div>
+</div>
+
+{% endblock %}

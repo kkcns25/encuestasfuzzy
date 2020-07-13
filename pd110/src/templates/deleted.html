@@ -1,0 +1,14 @@
+{% extends "base.html" %} <!-- para declarar que es una extension de base.html-->
+{% load static %}
+
+{% block head_title %}Encuesta borrada{% endblock %}<!-- titulo que sale en la pestaña del navegador-->
+
+
+{% block content %}
+
+<h2 class="text-align-center"><strong> {{titulo}}</strong></h2>
+<a class="btn btn-lg btn-primary" href="{% url 'inicio' %}"role="button">Inicio &raquo;</a>
+
+{% endblock %}
+
+

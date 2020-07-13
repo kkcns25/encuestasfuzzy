@@ -1,0 +1,40 @@
+{% extends "base.html" %} <!-- para declarar que es una extension de base.html-->
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}Borrar Encuesta {{ block.super }}{% endblock %}
+
+{% block content %}
+
+{% if request.user.is_staff %}
+
+    <h2 class="text-align-center"><strong> {{ titulo }} </strong></h2>
+
+    <script type="text/javascript">
+    var texto = '{{ encuestas }}';
+    texto = texto.slice(6, -10);
+    var txt = texto.split('.csv&#39;, &#39;');
+    if (texto != ''){
+        for (var i = 0; i < txt.length; i++) {
+
+            texto1 = String(txt[i] + '&raquo;</a><br/>');
+            texto2 = '<br/><a class="btn btn-lg btn-primary" href="{% url 'sure' %}?'+txt[i];
+            texto2 = texto2 + '" role="button">';
+            texto2 = texto2 + texto1;
+            document.write(texto2);
+        }
+    }
+    else{
+
+    document.write('<a class="btn btn-lg btn-primary" href="{% url 'inicio' %}"role="button">Inicio &raquo;</a>');
+    }
+    </script>
+    <br>
+{% else %}
+     <Script language="JavaScript">
+        alert('Necesitas ser staff para poder acceder a esta función');
+        location = "/";
+     </Script>
+
+{% endif %}
+{% endblock %}

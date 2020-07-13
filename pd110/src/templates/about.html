@@ -1,0 +1,28 @@
+{% extends "base.html" %} <!-- para declarar que es una extension de base.html-->
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}Sobre nosotros{% endblock %}<!-- titulo que sale en la pestaña del navegador-->
+
+
+{% block content %}
+
+        <h2 class="text-align-center"><strong> Un poco sobre este proyecto</strong></h2>
+        <p align="justify">  Éste proyecto comenzo para dar cabida a la realización de encuestas, en las cuales se muestre el grado de aceptación a al título de cada cuestión. El modelo clásico es el denominado modelo Likert, el cual da la posibilidad de seleccionar el grado de aceptación, pero el cual siempre es un número fijo, dando, comunmente, entre 3 y 7 posibles grado de aceptación, como vemos en la siguiente imagen; </p>
+
+        <img style="border: 2px solid; color: black;" src='{% static "img/ejemplo_likert.jpg" %}' width="1000"/><br><br>
+
+        <p align="justify">  Ante este panorama,nació esta la posibilidad de realizar encuestas en la que la posible respuesta tenga total grado de libertad, para mostar la aceptación de cada pregunta, este tipo de encuestas se llaman Fuzzy Likert. </p>
+
+        <p align="justify">  Aquí podras crear tus propias encuentas, las cuales serán respondidas con un rango de aceptación con total libertar de 0 a 100.  Aquí tenemos un ejemplo: <p>
+        <img style="border: 2px solid; color: black;" src='{% static "img/ejemplo_pregunta.jpg" %}'width="1000"/>
+
+        <p align="justify">  Si deseas crear tus propias encuestas, por favor registrate y ponte en contacto con nosotros para hacerte administrador.</p>
+        <p align="justify">  Tendrás la posibilidad de visualizar los resultados de las encuestas en la propia web, así como descargar las encuestas que ya han sido contestadas para poder analizar los datos posteriormente.Así verás los resultados de tu encuesta:</p>
+                <img style="border: 2px solid; color: black;" src='{% static "img/ejemplo_resultado.jpg" %}'width="1000"  />
+<br><br>
+<br><br>
+
+{% endblock %}
+
+

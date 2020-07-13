@@ -1,0 +1,22 @@
+{% extends "base.html" %} <!-- para declarar que es una extension de base.html-->
+{% load crispy_forms_tags %}
+
+
+
+{% block head_title %} Create {% endblock %}
+
+{% block content %}
+    {% if titulo %}
+        <h1>{{ titulo }}</h1><br>
+        <font color="red"><h2>{{ problema }} </h2></font>
+    {% endif %}
+
+    <form method="POST"  action="">
+
+{% csrf_token %}
+{{ form|crispy }}
+
+    <input class='btn btn-primary' type='submit' value='Enviar'/>
+    </form>
+
+{% endblock %}

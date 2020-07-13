@@ -1,0 +1,73 @@
+{% extends "base.html" %} <!-- para declarar que es una extension de base.html-->
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+{% csrf_token %}
+
+
+{{ form|crispy }}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{% static 'js/jquery.csv.js' %}"></script>
+
+{% if request.user.is_authenticated %}
+
+<h1>{{ titulo }}</h1>
+
+<link rel="stylesheet" href="{% static 'css/slider.css' %}" />
+
+
+<!-- Start Slider with two  knobs-->
+<div class="slider_outer" >
+  <div id= "questions"><h1> {{ questions }}</h1></div><br/><br/>
+  <div class="slide_container" >
+    <div id="slider_minmax_min"  class="floatl fontblue"> </div>
+    <div class="slider_gutter" id="minmax_slider" >
+      <div id="slider_minmax_gutter_l" class="slider_gutter_item iconsprite_controls"></div>
+      <div id="slider_minmax_gutter_m" class="slider_gutter_item gutter iconsprite_controls">
+
+        <img id="slider_bkg_img" src="{% static 'img/bkg_slider.gif' %}"/>
+        <div id="slider_minmax_minKnobA" class="knob"></div>
+        <div id="slider_minmax_maxKnobA" class="knob"></div>
+      </div>
+      <div id="slider_minmax_gutter_r" class="slider_gutter_item iconsprite_controls"> </div>
+    </div>
+    <div id="slider_minmax_max" class="floatl fontblue"> </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/mootools12_all_p.js' %}"></script>
+<script type="text/javascript" >
+
+// ON LOAD
+window.addEvent('domready', function() {
+	var mySlideA = new Slider($('slider_minmax_gutter_m'), $('slider_minmax_minKnobA'),$('slider_bkg_img'), {
+		start: 0,
+		end: 100,
+		offset:0,
+		snap:false,
+		onChange: function(pos){$('slider_minmax_min').setHTML('min '+pos.minpos);$('slider_minmax_max').setHTML('max '+pos.maxpos);}
+	}, $('slider_minmax_maxKnobA')).setMin(40).setMax(60);
+  }
+);
+
+</script>
+
+<a class="btn btn-lg btn-primary" role="button" id = 'boton'>Siguiente pregunta &raquo;</a><!--href="{% url 'start_q' %}"-->
+<br>
+<div id= "encuesta">{{ encuesta }}</div><br/><br/>
+<script src="{% static 'js/load_questions.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slider.js' %}"></script>
+
+
+{% else %}
+     <Script language="JavaScript">
+        alert('Necesitas ser usuario para poder acceder a esta función');
+        location = "/";
+     </Script>
+
+{% endif %}
+{% endblock %}
+

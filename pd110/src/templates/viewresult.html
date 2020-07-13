@@ -1,0 +1,44 @@
+{% extends "base.html" %} <!-- para declarar que es una extension de base.html-->
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}Descargar datos encuesta | {{ block.super }}{% endblock %}
+
+{% block content %}
+
+{% if request.user.is_staff %}
+
+
+    <h2 class="text-align-center"><strong> {{ titulo }} </strong></h2>
+
+    {% if files == '' %}
+        <h2 class="text-align-center"><strong> Lo sentimos, no tienes ninguna encuesta para ver los resultados, pero puedes crear una encuesta: </strong></h2>
+            <br/><a class="btn btn-lg btn-primary" href="{% url 'create' %}"role="button">Crear encuesta &raquo;</a><br/>
+    {% else %}
+
+    <script type="text/javascript">
+    var texto = '{{ encuestas }}';
+    texto = texto.slice(6, -10);
+    var txt = texto.split('.csv&#39;, &#39;');
+
+    for (var i = 0; i < txt.length; i++) {
+
+        texto1 = String(txt[i] + '&raquo;</a><br/>');
+        texto2 = '<br/><a class="btn btn-lg btn-primary" href="{% url 'start_r' %}?'+txt[i];
+        texto2 = texto2 + '" role="button">';
+        texto2 = texto2 + texto1;
+        document.write(texto2);
+        //document.write('<input type="hidden" name="campo1" value="3005">');
+    }
+    </script>
+    <br>
+    {% endif %}
+
+{% else %}
+     <Script language="JavaScript">
+        alert('Necesitas ser usuario para poder acceder a esta función');
+        location = "/";
+     </Script>
+
+{% endif %}
+{% endblock %}

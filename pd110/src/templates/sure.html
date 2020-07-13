@@ -1,0 +1,36 @@
+{% extends "base.html" %} <!-- para declarar que es una extension de base.html-->
+{% load static %}
+
+{% block head_title %} Borrando {% endblock %}<!-- titulo que sale en la pestaña del navegador-->
+
+
+{% block content %}
+
+
+<script type= "text/javascript" >
+// necesario hacerlo aquí, haciendolo en  .js da problemas al crear el enlace
+var loc = document.URL;
+        // si existe nombre del documento pasado por la url
+    if(loc.indexOf('?')==0){location = "/inicio/";}
+    if(loc.indexOf('?')>0)
+    {   // cogemos la parte de la url que hay despues del interrogante
+        var arch = loc.split('?')[1];
+        var arch1 = arch.replace('%20', ' ');
+
+        while(arch != arch1){
+            arch = arch1;
+            arch1 = arch1.replace('%20', ' ');
+        }
+    }
+    var nombre = arch;
+    arch = arch + '.csv';
+
+
+document.write('<h1>Has seleccionado la encuesta:</br>' + nombre + "<\h1>");
+document.write('<a class="btn btn-lg btn-primary" href="{% url 'delete' %} "role="button">Cancelar y volver &raquo;</a></p>');
+document.write('<a class="btn btn-lg btn-primary" href="{% url 'deleted' %}?'+arch+'"role="button">Borrar encuesta &raquo;</a>');
+</script>
+
+{% endblock %}
+
+

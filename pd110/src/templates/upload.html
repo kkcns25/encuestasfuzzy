@@ -1,0 +1,30 @@
+{% extends "base.html" %} <!-- para declarar que es una extension de base.html-->
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %} Upload {% endblock %}
+
+{% block content %}
+
+{% if request.user.is_staff %}
+
+        <h1>{{ titulo }}</h1><br/>
+
+        {% if form %}
+        <form method="POST" action="" enctype="multipart/form-data">  {% csrf_token %}<br/>
+            {{ form.as_p }}
+            <input class='btn btn-primary' type='submit' value='Subir encuesta'/>
+
+        </form>
+        {% endif %}
+
+
+{% else %}
+     <Script language="JavaScript">
+          alert('Necesitas ser staff para poder acceder a esta función');
+          location = "/";
+     </Script>
+
+{% endif %}
+{% endblock %}
+

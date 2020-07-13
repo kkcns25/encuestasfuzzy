@@ -1,0 +1,43 @@
+<!doctype html>
+{% load static %}
+{% include "navbar.html" %}
+{% include "head_css.html" %}
+
+
+  <head>
+    <title>{% block head_title%}Bienvenido{%endblock %}</title>
+      <style>
+          {% block style %}
+          {% endblock%}
+      </style>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/navbar-top.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+  {% block jumbotron %}
+  {% endblock %}
+<main role="main" class="container">
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+  </body>
+
