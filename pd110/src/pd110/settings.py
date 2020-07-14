@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')f+q5ie&0td@+m==_ojs03t7dji7wdvd2wj@$!w+o(lm=j=-a#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False   #cambiar para produccion
+DEBUG = False   #cambiar a false para produccion
 
 ALLOWED_HOSTS = ['encuestasfuzzy.pythonanywhere.com','127.0.0.1']
 
