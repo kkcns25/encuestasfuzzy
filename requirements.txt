@@ -8,7 +8,7 @@ icalendar==4.0.3
 pip==20.1.1
 python-dateutil==2.8.1
 pytz==2018.9
-setuptools==28.8.0
+setuptools==65.5.1
 six==1.13.0
 Unidecode==1.1.1
 
